@@ -484,6 +484,43 @@ a {
   background: rgba(255, 255, 255, 0.72);
 }
 
+.schedule {
+  display: grid;
+  gap: 1rem;
+}
+
+.schedule-day {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.schedule-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.schedule-list li {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(17, 36, 30, 0.08);
+}
+
+.schedule-list time {
+  color: var(--earth-600);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.schedule-list span {
+  color: var(--text-700);
+}
+
 .form {
   display: grid;
   gap: 0.55rem;
@@ -630,5 +667,10 @@ textarea:focus {
   .teacher-photo,
   .teacher-modal-image {
     height: 230px;
+  }
+
+  .schedule-list li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
   }
 }

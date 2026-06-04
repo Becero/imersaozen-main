@@ -24,7 +24,7 @@ if (form && statusText) {
     }
 
     const text = [
-      "Ol\u00e1, tenho interesse no Yoga Padma Retiro.",
+      "Ol\u00e1, tenho interesse no retiro Yoga nas Montanhas.",
       `Nome: ${nome}`,
       `E-mail: ${email}`,
       `WhatsApp: ${telefone}`,
