@@ -6,6 +6,9 @@ const teacherPrev = document.getElementById("teacher-prev");
 const teacherNext = document.getElementById("teacher-next");
 const teacherPosition = document.getElementById("teacher-position");
 const lightboxImages = Array.from(document.querySelectorAll("[data-lightbox-image]"));
+const galleryTrack = document.getElementById("place-gallery-track");
+const galleryPrev = document.getElementById("gallery-prev");
+const galleryNext = document.getElementById("gallery-next");
 const whatsappBaseUrl = "https://wa.me/5512992080994";
 
 if (form && statusText) {
@@ -84,6 +87,20 @@ if (teacherSlides.length > 0 && teacherPrev && teacherNext && teacherPosition) {
   });
 
   renderTeacher(currentTeacherIndex);
+}
+
+if (galleryTrack && galleryPrev && galleryNext) {
+  const scrollGallery = (direction) => {
+    const firstItem = galleryTrack.querySelector("img");
+    const itemWidth = firstItem ? firstItem.getBoundingClientRect().width : 220;
+    galleryTrack.scrollBy({
+      left: direction * (itemWidth + 16) * 2,
+      behavior: "smooth",
+    });
+  };
+
+  galleryPrev.addEventListener("click", () => scrollGallery(-1));
+  galleryNext.addEventListener("click", () => scrollGallery(1));
 }
 
 if (lightboxImages.length > 0) {
