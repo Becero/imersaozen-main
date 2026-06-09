@@ -341,9 +341,10 @@ a {
 
 .meal-section {
   display: grid;
-  grid-template-columns: 0.78fr 1.22fr;
-  gap: 1.4rem;
+  grid-template-columns: minmax(0, 0.86fr) minmax(320px, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
+  width: min(1000px, 92%);
 }
 
 .meal-copy {
@@ -353,22 +354,75 @@ a {
 
 .meal-figure {
   margin: 0;
+  width: 100%;
+  max-width: 620px;
+  justify-self: center;
 }
 
 .meal-figure img {
   display: block;
   width: 100%;
+  max-height: 390px;
   height: auto;
+  object-fit: contain;
   border-radius: 18px;
   box-shadow: var(--shadow-soft);
+  cursor: zoom-in;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.meal-figure img:hover,
+.meal-figure img:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 52px rgba(18, 36, 30, 0.16);
+  outline: none;
 }
 
 .room-section {
-  grid-template-columns: 1.22fr 0.78fr;
+  grid-template-columns: minmax(320px, 1fr) minmax(0, 0.86fr);
 }
 
 .practice-section {
   margin-top: 3.5rem;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  place-items: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: rgba(17, 36, 30, 0.82);
+}
+
+.image-lightbox.is-open {
+  display: grid;
+}
+
+.image-lightbox img {
+  display: block;
+  max-width: min(1120px, 94vw);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: auto;
+  padding: 0.7rem 1rem;
+  border-color: rgba(255, 255, 255, 0.32);
+  color: var(--white);
+  background: rgba(17, 36, 30, 0.72);
+}
+
+body.lightbox-open {
+  overflow: hidden;
 }
 
 .split {
@@ -656,6 +710,18 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .meal-section {
+    width: min(760px, 92%);
+  }
+
+  .meal-figure {
+    max-width: 100%;
+  }
+
+  .meal-figure img {
+    max-height: 340px;
+  }
+
   .hero {
     min-height: auto;
     padding-bottom: 3rem;
@@ -684,6 +750,10 @@ textarea:focus {
     width: 100%;
   }
 
+  .image-lightbox-close {
+    width: auto;
+  }
+
   .hero-actions {
     width: 100%;
   }
@@ -700,6 +770,10 @@ textarea:focus {
   .teacher-photo,
   .teacher-modal-image {
     height: 230px;
+  }
+
+  .meal-figure img {
+    max-height: 260px;
   }
 
   .schedule-list li {

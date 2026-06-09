@@ -5,6 +5,7 @@ const teacherSlides = Array.from(document.querySelectorAll(".teacher-slide"));
 const teacherPrev = document.getElementById("teacher-prev");
 const teacherNext = document.getElementById("teacher-next");
 const teacherPosition = document.getElementById("teacher-position");
+const lightboxImages = Array.from(document.querySelectorAll("[data-lightbox-image]"));
 const whatsappBaseUrl = "https://wa.me/5512992080994";
 
 if (form && statusText) {
@@ -83,4 +84,64 @@ if (teacherSlides.length > 0 && teacherPrev && teacherNext && teacherPosition) {
   });
 
   renderTeacher(currentTeacherIndex);
+}
+
+if (lightboxImages.length > 0) {
+  const lightbox = document.createElement("div");
+  const lightboxImage = document.createElement("img");
+  const closeButton = document.createElement("button");
+
+  lightbox.className = "image-lightbox";
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
+  lightbox.setAttribute("aria-label", "Imagem ampliada");
+
+  closeButton.className = "btn image-lightbox-close";
+  closeButton.type = "button";
+  closeButton.textContent = "Fechar";
+
+  lightbox.append(lightboxImage, closeButton);
+  document.body.appendChild(lightbox);
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("is-open");
+    document.body.classList.remove("lightbox-open");
+    lightboxImage.removeAttribute("src");
+    lightboxImage.removeAttribute("alt");
+  };
+
+  const openLightbox = (image) => {
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt || "Imagem ampliada";
+    lightbox.classList.add("is-open");
+    document.body.classList.add("lightbox-open");
+    closeButton.focus();
+  };
+
+  lightboxImages.forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-label", `${image.alt}. Ampliar imagem`);
+
+    image.addEventListener("click", () => openLightbox(image));
+    image.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(image);
+      }
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+      closeLightbox();
+    }
+  });
 }
