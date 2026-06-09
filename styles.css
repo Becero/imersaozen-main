@@ -363,6 +363,10 @@ a {
   box-shadow: var(--shadow-soft);
 }
 
+.room-section {
+  grid-template-columns: 1.22fr 0.78fr;
+}
+
 .split {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
