@@ -25,7 +25,7 @@ if (form && statusText) {
     }
 
     const text = [
-      "Ol\u00e1, tenho interesse no segundo lote do retiro Yoga nas Montanhas por R$ 3.300,00 em at\u00e9 12x sem juros no cart\u00e3o.",
+      "Ol\u00e1, tenho interesse no segundo lote do retiro Yoga nas Montanhas por R$ 3.330,00 em at\u00e9 10x sem juros no cart\u00e3o.",
       `Nome: ${nome}`,
       `E-mail: ${email}`,
       `WhatsApp: ${telefone}`,
