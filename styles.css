@@ -367,6 +367,10 @@ a {
   grid-template-columns: 1.22fr 0.78fr;
 }
 
+.practice-section {
+  margin-top: 3.5rem;
+}
+
 .split {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
