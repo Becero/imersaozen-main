@@ -339,6 +339,30 @@ a {
   margin-top: 0.45rem;
 }
 
+.meal-section {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 1.4rem;
+  align-items: center;
+}
+
+.meal-copy {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.meal-figure {
+  margin: 0;
+}
+
+.meal-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
 .split {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
@@ -618,6 +642,7 @@ textarea:focus {
   .grid.two,
   .grid.three,
   .feature-row,
+  .meal-section,
   .split,
   .teacher-modal-content {
     grid-template-columns: 1fr;
